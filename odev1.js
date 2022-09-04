@@ -9,7 +9,24 @@
 
 //Test :
 
-const array = ["Patika","219","Akbank","React","Bootcamp"]
+const array = ["Patika", "219", "Akbank", "React", "Bootcamp"];
 
-console.log(array.includesCi("patika")===true ? "Beklendiği gibi" : "Beklendiği gibi değil")
-console.log(array.includesCi("kırmızı")===false ? "Beklendiği gibi" : "Beklendiği gibi değil")
+Array.prototype.includesCi = function (search) {
+  if (this.find((item) => item.toLowerCase() === search.toLowerCase())) {
+    // array içindekileri tek tek dön ve küçük harfe çevir
+    // parametre olarak verdiğimi küçük harfe çevir öyle karşılaştır
+    // birbirine denkse true değilse false döndür.
+    return true;
+  } else return false;
+};
+
+console.log(
+  array.includesCi("patika") === true
+    ? "Beklendiği gibi"
+    : "Beklendiği gibi değil"
+);
+console.log(
+  array.includesCi("kırmızı") === false
+    ? "Beklendiği gibi"
+    : "Beklendiği gibi değil"
+);
