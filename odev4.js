@@ -1,35 +1,60 @@
-/** 
+/**
  * Size verilen iki adet array’den
  * uygun methodları kullanarak yeni
  * bir object oluşturmanız gerekiyor.
- * Ve bu obje key-value şeklinde 
+ * Ve bu obje key-value şeklinde
  * doğru eşleştirme yapılarak
- * oluşturulmalı. 
+ * oluşturulmalı.
  */
 
-
 const input = {
-    "cols": ["Name Surname", "Company", "Email", "Date", "Country", "City"],
-    "data": [
-        ["Hyacinth Vincent", "Duis Corporation", "iaculis.enim@magnaCrasconvallis.ca", "28/06/2022", "Eritrea", "Lyubertsy"],
-        ["Brenden Martinez", "Volutpat Nunc Associates", "iaculis@estMauris.org", "24/03/2021", "British Indian Ocean Territory", "Colwood"]]
-}
+  cols: ["Name Surname", "Company", "Email", "Date", "Country", "City"],
+  data: [
+    [
+      "Hyacinth Vincent",
+      "Duis Corporation",
+      "iaculis.enim@magnaCrasconvallis.ca",
+      "28/06/2022",
+      "Eritrea",
+      "Lyubertsy",
+    ],
+    [
+      "Brenden Martinez",
+      "Volutpat Nunc Associates",
+      "iaculis@estMauris.org",
+      "24/03/2021",
+      "British Indian Ocean Territory",
+      "Colwood",
+    ],
+  ],
+};
+
+const denormalization = (element) => {
+  const matchingOrder = element.data.map((userInfo) =>
+    element.cols.reduce((acc, value, index) => {
+      acc[value] = userInfo[index];
+      return acc;
+    }, {})
+  );
+  return matchingOrder;
+};
+console.log(denormalization(input));
 
 const sampleoutput = [
-    {
-        "Name Surname": "Hyacinth Vincent",
-        "Company": "Duis Corporation",
-        "Email": "iaculis.enim@magnaCrasconvallis.ca",
-        "Date": "28/06/2022",
-        "Country": "Eritrea",
-        "City": "Lyubertsy"
-    },
-    {
-        "Name Surname": "Brenden Martinez",
-        "Company": "olutpat Nunc Associates",
-        "Email": "iaculis@estMauris.org",
-        "Date": "24/03/2021",
-        "Country": "British Indian Ocean Territory",
-        "City": "Colwood"
-    }
-]
+  {
+    "Name Surname": "Hyacinth Vincent",
+    Company: "Duis Corporation",
+    Email: "iaculis.enim@magnaCrasconvallis.ca",
+    Date: "28/06/2022",
+    Country: "Eritrea",
+    City: "Lyubertsy",
+  },
+  {
+    "Name Surname": "Brenden Martinez",
+    Company: "olutpat Nunc Associates",
+    Email: "iaculis@estMauris.org",
+    Date: "24/03/2021",
+    Country: "British Indian Ocean Territory",
+    City: "Colwood",
+  },
+];
