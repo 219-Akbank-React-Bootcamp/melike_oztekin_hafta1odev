@@ -20,13 +20,9 @@ Array.prototype.includesCi = function (search) {
   } else return false;
 };
 
-console.log(
-  array.includesCi("patika") === true
-    ? "Beklendiği gibi"
-    : "Beklendiği gibi değil"
-);
-console.log(
-  array.includesCi("kırmızı") === false
-    ? "Beklendiği gibi"
-    : "Beklendiği gibi değil"
-);
+//test
+
+console.log(array.includesCi("patika")); // true
+console.log(array.includesCi("AKBANK")); // true
+console.log(array.includesCi("kırmızı")); // false
+console.log(array.includesCi("ReAct")); // true
